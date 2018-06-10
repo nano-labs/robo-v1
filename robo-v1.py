@@ -3,6 +3,7 @@ from time import sleep
 import serial
 import pygame
 from pygame.locals import *
+import traceback
 
 while True:
     try:
@@ -22,4 +23,8 @@ while True:
                         ser.write(chr(event.key).upper())
                         print "up ", event.key
     except:
+        log = open("/home/pi/robo.log", "a")
+        log.write("{}\n".format(traceback.format_exc())
+        log.close()
         sleep(5)
+
