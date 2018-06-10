@@ -11,8 +11,8 @@ while True:
         pygame.init()
         pygame.display.set_mode((1, 1))
 
-        # with serial.Serial('/dev/ttyUSB0', 9600, timeout=1) as ser:
-        with serial.Serial('/dev/cu.usbserial-A900abSe', 9600, timeout=1) as ser:
+        with serial.Serial('/dev/ttyUSB0', 9600, timeout=1) as ser:
+        # with serial.Serial('/dev/cu.usbserial-A900abSe', 9600, timeout=1) as ser:
 
             while True:
                 for event in pygame.event.get():
