@@ -8,8 +8,8 @@
 #define PWMB 6
 #define STBY 9
 
-const int offsetA = 1;
-const int offsetB = 1;
+const int offsetA = -1;
+const int offsetB = -1;
 
 Motor motor2 = Motor(AIN1, AIN2, PWMA, offsetA, STBY);
 Motor motor1 = Motor(BIN1, BIN2, PWMB, offsetB, STBY);
@@ -46,7 +46,7 @@ if (Serial.available() > 0) {
     }
     else if (inByte == 97) { // a
         Serial.write("a");
-        pan = -0.5;
+        pan = -0.3;
 //        left(motor1, motor2, speed);
     }
     else if (inByte == 65) { // A
@@ -63,7 +63,7 @@ if (Serial.available() > 0) {
     }
     else if (inByte == 100) { // d
         Serial.write("d");
-        pan = 0.5;      
+        pan = 0.3;      
     }
     else if (inByte == 68) { // D
         Serial.write("D");
@@ -80,16 +80,16 @@ if (Serial.available() > 0) {
     if (speed < 0.0) {
       speed = 0.0;
     }
-    else if (speed > 255.0) {
-      speed = 255.0;
+    else if (speed > 220.0) {
+      speed = 220.0;
     }
     if (throttle == 0.0) {
-      m1 = speed * -pan;
-      m2 = speed * pan;
+      m1 = speed * -pan * 3;
+      m2 = speed * pan * 3;
     }
     else {
-      m1 = speed * (throttle - (pan * throttle));
-      m2 = speed * (throttle + (pan * throttle));
+      m1 = speed * (throttle + (pan * throttle));
+      m2 = speed * (throttle - (pan * throttle));
     }
     motor1.drive(int(m1));
     motor2.drive(int(m2));
