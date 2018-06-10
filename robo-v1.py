@@ -24,7 +24,7 @@ while True:
                         print "up ", event.key
     except:
         log = open("/home/pi/robo.log", "a")
-        log.write("{}\n".format(traceback.format_exc())
+        log.write("{}\n".format(traceback.format_exc()))
         log.close()
         sleep(5)
 
